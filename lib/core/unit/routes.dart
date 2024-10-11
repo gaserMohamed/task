@@ -4,9 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:tasky/core/logic/helper_methods.dart';
 import 'package:tasky/feature/auth/register/bloc.dart';
 import 'package:tasky/feature/home/get_one_task/bloc.dart';
+import 'package:tasky/feature/home/profile/bloc.dart';
 import 'package:tasky/view/add_task/view.dart';
 import 'package:tasky/view/home/view.dart';
 import 'package:tasky/view/onboarding/view.dart';
+import 'package:tasky/view/profile/view.dart';
 import 'package:tasky/view/splash/view.dart';
 
 import '../../feature/auth/login/bloc.dart';
@@ -24,6 +26,7 @@ abstract class AppRouter {
   static const String rSignUp = '/sing_up';
   static const String rHome = '/home';
   static const String rBarcode = '/barcode';
+  static const String rProfile = '/profile';
   static const String rAdd = '/add_task';
   static const String rTaskDetails = r'/task-details';
 
@@ -66,6 +69,14 @@ abstract class AppRouter {
               return getIt<LoginBloc>();
             },
             child: const LoginView()),
+      ),
+      GoRoute(
+        path: rProfile,
+        builder: (context, state) => BlocProvider(
+            create: (BuildContext context) {
+              return getIt<ProfileBloc>();
+            },
+            child:  const ProfileView()),
       ),
       GoRoute(
         path: rSignUp,

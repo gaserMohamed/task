@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:tasky/feature/home/get_one_task/bloc.dart';
+import 'package:tasky/feature/home/profile/bloc.dart';
 import 'package:tasky/feature/home/tasks/bloc.dart';
 
 
@@ -12,6 +13,7 @@ void getItServices() {
   //Auth
   getIt.registerFactory<RegisterBloc>(() => RegisterBloc());
   getIt.registerFactory<LoginBloc>(() => LoginBloc());
+  getIt.registerSingleton<ProfileBloc>(ProfileBloc());
 
   getIt.registerFactory<TasksBloc>(() => TasksBloc());
   getIt.registerFactory<TasksOneTaskBloc>(() => TasksOneTaskBloc());

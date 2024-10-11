@@ -11,7 +11,7 @@ import 'package:tasky/feature/home/tasks/bloc.dart';
 import '../../core/logic/helper_methods.dart';
 import '../../core/unit/routes.dart';
 import '../../core/widget/shimmer.dart';
-part 'app_ bar.dart';
+part 'app_bar.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({super.key});
@@ -22,7 +22,7 @@ class HomePageView extends StatefulWidget {
 
 class _HomePageViewState extends State<HomePageView> {
   TaskType taskType = TaskType.all;
-  Color color = const Color(0xffF0ECFF);
+  Color color = const Color.fromRGBO(240, 236, 255, 1);
   late final TasksBloc bloc;
   int page=1;
   bool isLoading = false;
@@ -104,8 +104,9 @@ class _HomePageViewState extends State<HomePageView> {
                                 child: Text(
                                   tasks[index].toString().split('.').last.toUpperCase(),
                                   style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
+                                    color:                                   taskType == tasks[index]?
+                                    Colors.white:const Color.fromRGBO(124, 124, 128, 1),
+                                    fontWeight:   taskType == tasks[index]?FontWeight.w700:FontWeight.w400,
                                     fontSize: 16.sp,
                                   ),
                                 ),
@@ -174,7 +175,7 @@ if(state is TasksLoadingState)
                                   if(state.model.length==index){
                                     return SizedBox(
                                       height: state.isAllLoaded?16.h:100.h,
-                                      child:state.isAllLoaded?null: const Center(child: CircularProgressIndicator()),
+                                      child:state.isAllLoaded||state.model.length<=9?null: const Center(child: CircularProgressIndicator()),
                                     );
                                   }
 

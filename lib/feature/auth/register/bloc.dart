@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/logic/cashed_helper.dart';
 import '../../../core/logic/dio_helper.dart';
 import '../../../core/logic/helper_methods.dart';
 
@@ -21,6 +22,11 @@ class RegisterBloc extends Bloc<RegisterEvents, RegisterStates> {
         .sendData(endPoint: 'auth/register', data: event.data);
 
     if (response.isSuccess) {
+      CachedHelper.saveData(
+          token: response.response!.data['access_token'],
+          id: response.response!.data['_id'],
+          refreshToken: response.response!.data['refresh_token']);
+
       emit(RegisterSuccessState(
         message: response.message,
         phone: event.phone,

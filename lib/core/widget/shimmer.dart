@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerList extends StatelessWidget {
@@ -10,13 +11,18 @@ class ShimmerList extends StatelessWidget {
       baseColor: Colors.grey[300]!,
       highlightColor: Colors.grey[100]!,
       child: ListView.builder(
-        itemCount: 5, // Adjust the count based on your needs
+        itemCount: 10, // Adjust the count based on your needs
         itemBuilder: (context, index) {
           return ListTile(
             title: Container(
-              height: 20,
-              width: 200,
-              color: Colors.white,
+              padding: EdgeInsets.all(16.r),
+              height: 24.h,
+              width: 200.w,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius:     BorderRadius.circular(
+                    20.r),
+              ),
             ),
           );
         },

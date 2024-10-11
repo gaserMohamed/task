@@ -33,9 +33,9 @@ class TasksBloc extends Bloc<TasksEvents, TasksStates> {
       emit(TasksSuccessState(
         model: [...event.allTask ?? [], ...listTasks],
         type: event.type,
-        isAllLoaded: listTasks.isEmpty,
+        isAllLoaded: listTasks.isEmpty||listTasks.length<9,
       ));
-
+print("listTasks.isEmpty&&listTasks.length<9,${listTasks.isEmpty||listTasks.length<9}");
 
   } else {
       emit(TasksFailedState(

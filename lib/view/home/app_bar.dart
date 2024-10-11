@@ -20,11 +20,16 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           const Spacer(),
-          const AppImage(
-            path: DataAssets.profile,
-            height: 24,
-            width: 24,
-            fit: BoxFit.scaleDown,
+          GestureDetector(
+            onTap: (){
+              GoRouter.of(context).go(AppRouter.rProfile);
+            },
+            child: const AppImage(
+              path: DataAssets.profile,
+              height: 24,
+              width: 24,
+              fit: BoxFit.scaleDown,
+            ),
           ),
           SizedBox(
             width: 20.w,
